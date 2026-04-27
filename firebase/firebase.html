@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .texto{
+            color:rgb(252, 134, 232);
+        }
+        .campo{
+            border:1px solid rgba(245, 76, 177, 0.84);
 
+        }
+        .botao{
+            background-color :rgb(245, 64, 121);
+            color:white;
+        }
+        fieldset{
+            border:1px solid rgb(251, 151, 224);
+        }
+        .titulo{
+            color:rgb(244, 191, 173);
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+        <legend class="titulo">Cadastro do Firebase</legend>
+         <p class="texto">CPF:</p><input type="text" class="campo" placeholder="digite seu cpf" maxlength="11" minlength="11" required>
+         <p class="texto">Email:</p><input type="text" class="campo" placeholder="digite seu email" maxlength="30" minlength="11" required>
+         <p class="texto">Nome:</p><input type="text" class="campo" placeholder="digite seu nome" maxlength="50" minlength="11" required>
+         <p class="texto">Senha:</p><input type="text" class="campo" placeholder="digite sua senha" maxlength="10" minlength="5" required>
+         <p class="texto">Telefone:</p><input type="text" class="campo" placeholder="digite telefone" maxlength="11" minlength="11" required>
+        <input type="submit" value="cadastrar" class="botao">
+    </fieldset>
+    </form>
+</body>
+</html>
