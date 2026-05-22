@@ -1,42 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .texto{
-            color:rgb(252, 134, 232);
-        }
-        .campo{
-            border:1px solid rgba(245, 76, 177, 0.84);
+        form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
+        const cpf = document.getElementById("cpf").value;
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const telefone = document.getElementById("telefone").value;
+        const senha = document.getElementById("senha").value;
+        const cep = document.getElementById("cep").value;
+        const idade = document.getElementById("idade").value;
+
+        try {
+            await addDoc(collection(db, "usuarios"), {
+            cpf,
+            nome,
+            email,
+            telefone,
+            senha,
+            cep,
+            idade
+            });
+
+            mensagem.textContent = "Usuário salvo com sucesso.";
+            mensagem.style.color = "green";
+            form.reset();
+        } catch (error) {
+            mensagem.textContent = "Erro ao salvar: " + error.message;
+            mensagem.style.color = "red";
         }
-        .botao{
-            background-color :rgb(245, 64, 121);
-            color:white;
-        }
-        fieldset{
-            border:1px solid rgb(251, 151, 224);
-        }
-        .titulo{
-            color:rgb(244, 191, 173);
-        }
-    </style>
-</head>
-<body>
-    <form id="formulario">
-        <fieldset>
-        <legend class="titulo">Cadastro do Firebase</legend>
-         <p class="texto">CPF:</p><input type="text" id="cpf" class="campo" placeholder="digite seu cpf" maxlength="12" minlength="11" required>
-         <p class="texto">Email:</p><input type="text" id="email" class="campo" placeholder="digite seu email" maxlength="30" minlength="9" required>
-         <p class="texto">Nome:</p><input type="text" id="nome" class="campo" placeholder="digite seu nome" maxlength="50" minlength="5" required>
-         <p class="texto">Senha:</p><input type="text" id="senha" class="campo" placeholder="digite sua senha" maxlength="10" minlength="5" required>
-         <p class="texto">Telefone:</p><input type="text" id="telefone" class="campo" placeholder="digite telefone" maxlength="11" minlength="11" required>
-         <p class="texto">CEP:</p><input type="text" id="cep" class="campo" placeholder="digite seu CEP" maxlength="12" minlength="8" required>
-         <p class="texto">Idade:</p><input type="text" id="data" class="campo" placeholder="digite sua idade" maxlength="2" minlength="2" required>
-        <input type="submit" value="cadastrar" class="botao">
-    </fieldset>
-    </form>
-</body>
-</html>
+        });
+    </script>
+    </head>
+    <body>
+        <form id="formulario">
+            <fieldset>
+                <legend>Cadastro do Firebase</legend>
+                <p>NOME:</p><input type="text" id="nome" class="campo" placeholder="Digite o seu nome" maxlength="100" minlength="5" required><br>
+                <p>IDADE</p><input type="text" id="idade" class="campo" placeholder="Digite sua idade" maxlength="2" minlength="1" required><br>
+                <p>EMAIL:</p><input type="text" id="email" class="campo" placeholder="Digite seu email" maxlength="50" minlength="10" required><br>
+                <p>CPF:</p><input type="text" id="cpf" class="campo" placeholder="Digite seu cpf" maxlength="11" minlength="11" required><br>
+                <p>SENHA:</p><input type="text" id="senha" class="campo" placeholder="Digite sua senha" maxlength="10" minlength="5" required><br>
+                <p>TELEFONE:</p><input type="text" id="telefone" class="campo" placeholder="Digite seu telefone" maxlength="11" minlength="11" required><br>
+                <p>CEP:</p><input type="text" id="cep" class="campo" placeholder="Digite seu cep" maxlength="12" minlength="10" required><br><br>
+                <input type="submit" value="Cadastrar">
+            </fieldset>
+        </form>
+    </body>
+<html>
