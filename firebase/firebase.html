@@ -1,3 +1,33 @@
+       <!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <title>FIREBASE</title>
+        <style>
+
+        </style>
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import {
+        getFirestore,
+        collection,
+        addDoc
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQ8RAFtxrU3jWv41ETYV702siGkTgkW-Q",
+              authDomain: "proj2a-2ee61.firebaseapp.com",
+              projectId: "proj2a-2ee61",
+              storageBucket: "proj2a-2ee61.firebasestorage.app",
+              messagingSenderId: "1066369264206",
+              appId: "1:1066369264206:web:891887ac58b1ca066b311f"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const form = document.getElementById("formulario");
+        const mensagem = document.getElementById("mensagem");
+
         form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
